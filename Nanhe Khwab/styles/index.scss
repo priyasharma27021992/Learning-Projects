@@ -1,0 +1,40 @@
+@font-face {
+  font-family: "Martel";
+  src: url(../fonts/Martel-Regular.ttf);
+}
+
+@import "variables";
+@import "header";
+@import "slider";
+@import "article";
+@import "volunteer";
+
+html {
+  font-size: $root-font-size;
+  font-family: "Martel";
+  color: $theme-font-color;
+
+  margin: 0 auto;
+  text-align: center;
+
+  body {
+    margin: 0;
+  }
+}
+
+p {
+  font-size: $paragraph-font-size;
+}
+
+#more {
+  display: none;
+}
+
+.buttonaslink {
+  background: none !important;
+  border: none;
+  padding: 0 !important;
+  color: #fd5f00;
+  text-decoration: none;
+  cursor: pointer;
+}

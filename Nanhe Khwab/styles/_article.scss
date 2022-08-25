@@ -1,0 +1,147 @@
+.page-article {
+    font-family: 'Martel';
+    padding: 0 1em;
+    text-align: left;
+
+    .header-yellow{
+        padding: 0em 0.6em;
+        color: $theme-headers-font;
+    }
+
+    .article-header {    
+        font-size: 2.5rem;
+        text-align: center;
+    }
+
+    .literacy-map{
+        height: 20em;
+        width: 20em;
+    }
+
+    .achievment{
+        display: flex;
+        flex-direction: row;
+        margin: 4em;
+        background:$theme-primary;
+    }
+
+    .achievement-image{
+        img{
+             max-height: 30em;
+            max-width: 30em;
+            min-width: 10em;
+            min-height: 10em;
+        }
+    }
+    .achievement-description{
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .two-divisions{
+    display: flex;
+    margin-top: -24px;
+
+    .division{
+        background:$theme-primary;
+        
+        &.map{
+            flex: 1 0 20%;
+        }
+
+        &.text-content{
+            flex: 1 0 70%;
+        }
+    }
+}
+}
+
+
+@media (max-width: $mobile-width) {
+    .page-article {
+        width: 28em;
+        
+         .article-header {    
+            font-size: 1.5rem;
+        }
+
+        .two-divisions {
+            display: grid;
+            grid-template-columns: 1fr;
+
+            .division{
+                background:$theme-primary;
+
+                &.map{
+                    flex: 1 0 50%;
+                }
+            
+                .literacy-map{
+                    height: 15em;
+                    width: 15em;
+                }
+
+                &.text-content{
+                    flex: 1 0 50%;
+                    height: 16em;
+                    overflow: scroll;
+                }
+        }
+        }
+
+        .article-content {
+            padding: 0.5em !important;
+        }
+        .achievment{
+            margin: 1em !important;
+            padding: 0.2em;
+            flex-direction: column;
+            align-items: center;
+        }   
+        
+        .achievement-content{
+            height: 14em;
+            overflow: scroll;
+        }
+        
+
+        .achievement-image{
+            img{
+                max-height: 14em;
+                max-width: 14em;
+            }
+        }
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .page-article{
+
+        .two-divisions {
+            width: 59em;
+
+            .division{
+                &.text-content{
+                    margin-left: 10px;
+                 }
+            }
+        }
+
+        .achievment{
+            flex-direction: column;
+        }
+
+        .achievement-image{
+            display: flex;
+            justify-content: center;
+
+            img{
+                    max-height: 30em;
+                    max-width: 37em;
+                }
+        }
+        
+    }
+}

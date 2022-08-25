@@ -1,0 +1,56 @@
+.volunteers{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 2em 1em;
+
+  .volunteer {
+    width: 300px;
+    height: 300px;
+    border: 1px solid #CCC;
+    perspective: 600px;
+    margin: auto;
+  }
+
+  .card {
+    width: 100%;
+    height: 100%;
+    transition: transform 1s;
+    transform-style: preserve-3d;
+    cursor: pointer;
+    position: relative;
+
+      img{
+          width: 100%;
+          height: 100%;
+      }
+  }
+
+  .card.is-flipped {
+    transform: rotateY(180deg);
+  }
+
+  .card__face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    font-weight: bold;
+    font-size: 40px;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+
+  .card__face--front {
+    background: $theme-headers-font;
+  }
+
+  .card__face--back {
+    font-size: 0.9em;
+    background:$theme-primary;
+    transform: rotateY(180deg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+}
