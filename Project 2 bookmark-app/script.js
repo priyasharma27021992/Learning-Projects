@@ -6,7 +6,7 @@ const websiteNameEl = document.getElementById("website-name");
 const websiteUrlEl = document.getElementById("website-url");
 const bookmarksContainer = document.getElementById("bookmarks-container");
 
-let bookmarks = [];
+let bookmarks = {};
 
 // Show Modal, Focus on Input
 function showModal() {
@@ -48,8 +48,8 @@ function buildBookmarks() {
   bookmarksContainer.textContent = "";
 
   //build bookmarks
-  bookmarks.forEach((bookmark) => {
-    const { name, url } = bookmark;
+  Object.keys(bookmarks)?.forEach((url) => {
+    const { name } = bookmarks[url];
     // Item
     const item = document.createElement("div");
     item.classList.add("item");
@@ -90,7 +90,12 @@ function fetchBookmarks() {
   if (localStorage.getItem("bookmarks")) {
     bookmarks = JSON.parse(localStorage.getItem("bookmarks"));
   } else {
-    bookmarks = [{ name: "Nanhe Khwab", url: "https://nanhekhwab.in" }];
+    bookmarks = {
+      "https://nanhekhwab.in": {
+        name: "Nanhe Khwab",
+        url: "https://nanhekhwab.in",
+      },
+    };
     localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
   }
   buildBookmarks();
@@ -98,11 +103,9 @@ function fetchBookmarks() {
 
 //Delete bookmarks
 function deleteBookmark(url) {
-  bookmarks.forEach((bookmark, index) => {
-    if (bookmark.url === url) {
-      bookmarks.splice(index, 1);
-    }
-  });
+  if (bookmarks[url]) {
+    delete bookmarks[url];
+  }
   //Update bookmarks array in localstorage and repopulate DOM
   localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
   fetchBookmarks();
@@ -117,11 +120,10 @@ function storeBookmark(e) {
     urlValue = `https://${urlValue}`;
   }
   if (!validate(nameValue, urlValue)) return false;
-  const bookmark = {
+  bookmarks[urlValue] = {
     name: nameValue,
     url: urlValue,
   };
-  bookmarks.push(bookmark);
   localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
   fetchBookmarks();
   bookmarkForm?.reset();
